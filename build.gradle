@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'com.jfrog.bintray' version '1.7.2'
+}
+
+group 'org.msyu.javautil'
+version '0.1.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+}
+
+publishing {
+    publications {
+        main(MavenPublication) {
+            from components.java
+            artifactId "cf"
+
+            artifact sourceJar {
+                classifier "sources"
+            }
+        }
+    }
+}
+
+bintray {
+    user = bintrayUser
+    key = bintrayKey
+    publications = ['main']
+    dryRun = false
+    publish = false
+    pkg {
+        userOrg = 'ypoluektovich'
+        repo = 'msyu'
+        name = 'javautil-cf'
+        desc = 'Utilities for working with Java collections and functional interfaces'
+        websiteUrl = 'https://github.com/ypoluektovich/msyu-javautil-cf'
+        issueTrackerUrl = 'https://github.com/ypoluektovich/msyu-javautil-cf/issues'
+        vcsUrl = 'https://github.com/ypoluektovich/msyu-javautil-cf.git'
+        licenses = ['MPL-2.0']
+        publicDownloadNumbers = true
+        version {
+            name = project.version
+            vcsTag = 'v' + project.version
+        }
+    }
+}
