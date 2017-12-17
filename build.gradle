@@ -5,13 +5,21 @@ plugins {
 }
 
 group 'org.msyu.javautil'
-version '0.1.0'
+version '0.1.1'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
+}
+
+dependencies {
+    testCompile 'org.testng:testng:6.+'
+}
+
+test {
+    useTestNG()
 }
 
 task sourceJar(type: Jar) {
