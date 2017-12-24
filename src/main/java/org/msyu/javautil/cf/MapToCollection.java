@@ -5,6 +5,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 
+/**
+ * @since 0.1.1
+ */
 public class MapToCollection<K, V, C extends Collection<V>> {
 
 	private final Map<K, C> backingMap;

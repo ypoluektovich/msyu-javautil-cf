@@ -66,6 +66,9 @@ public class Iterators {
 		return concat(asList(iterators));
 	}
 
+	/**
+	 * @since 0.1.1
+	 */
 	public static <E> Iterator<E> cutoff(Iterator<E> back, int count) {
 		return new CutoffIterator<>(back, count);
 	}
@@ -117,10 +120,16 @@ public class Iterators {
 
 	}
 
+	/**
+	 * @since 0.1.1
+	 */
 	public static <E> ListIterator<E> reverseListIterator(List<E> list) {
 		return reverseListIterator(list.listIterator(list.size()), list.size());
 	}
 
+	/**
+	 * @since 0.1.1
+	 */
 	public static <E> ListIterator<E> reverseListIterator(ListIterator<E> back, int size) {
 		return new ReverseListIterator<>(back, size);
 	}
